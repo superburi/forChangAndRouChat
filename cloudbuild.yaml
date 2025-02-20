@@ -43,3 +43,6 @@ steps:
 # 不加這行也可正常運作，只是有加的話可讀性會比較高
 images:
   - 'asia-east1-docker.pkg.dev/$PROJECT_ID/forchangandrouchat/forChangAndRouChatApp'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
