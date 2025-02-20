@@ -13,13 +13,13 @@ steps:
   # 意思是把此專案建立成一個叫做gcr.io/專案名稱/my-springboot-app 的 docker image，
   # 並且建立映像檔要依據的 Dockerfile 在目前資料夾，也就是專案根目錄
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/forChangAndRouChat', '.' ]
+    args: [ 'build', '-t', 'asia-east1-docker.pkg.dev/$PROJECT_ID/forchangandrouchat/forChangAndRouChatApp', '.' ]
 
   # 使用 gcp cloud build 提供的叫做 gcr.io/cloud-builders/docker 的映像檔來做接下來這個步驟要做的事，如下說明：
   # 等於下 "docker push gcr.io/$PROJECT_ID/my-springboot-app" 這個指令
   # 意思是把上一個步驟建立好的專案的映像檔推送到 gcr.io/$PROJECT_ID/ 這個位置，叫做 my-springboot-app
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'push', 'gcr.io/$PROJECT_ID/forChangAndRouChat' ]
+    args: [ 'push', 'asia-east1-docker.pkg.dev/$PROJECT_ID/forchangandrouchat/forChangAndRouChatApp' ]
 
   # 使用 gcp cloud build 提供的叫做 gcr.io/cloud-builders/gcloud 的映像檔來做接下來這個步驟要做的事，如下說明：
   # 等於下 "gcloud run deploy my-springboot-app" 這個指令，並且做以下個別設定：
@@ -30,7 +30,7 @@ steps:
         'deploy',
         'forChangAndRouChat',
         '--image', # 這行跟下一行在指定要部署的映像檔是哪個
-        'gcr.io/$PROJECT_ID/forChangAndRouChat',
+        'asia-east1-docker.pkg.dev/$PROJECT_ID/forchangandrouchat/forChangAndRouChatApp',
         '--region', # region asia-east1 是指定程式要部署到哪個區域的資料中心
         'asia-east1',
         '--platform', # platform managed 是指使用完全託管(fully-managed)模式的 cloud run
@@ -42,4 +42,4 @@ steps:
 # 在 cloud build 的介面上看 build artifact，就會看到這逼設定的名稱
 # 不加這行也可正常運作，只是有加的話可讀性會比較高
 images:
-  - 'gcr.io/$PROJECT_ID/forChangAndRouChat'
+  - 'asia-east1-docker.pkg.dev/$PROJECT_ID/forchangandrouchat/forChangAndRouChatApp'
