@@ -5,7 +5,7 @@ steps:
   # 等於下 "mvn clean install -DskipTests" 這個指令
   # 意思是 先把專案中之前編譯產生的舊檔案刪掉，接著打包並安裝 jar 到本地 maven 倉庫
   # ( 這裡的本地倉庫是指用來打包的環境的本地 maven 倉庫 )
-  - name: 'gcr.io/cloud-builders/mvn'
+  - name: 'asia-east1-docker.pkg.dev/$PROJECT_ID/forchangandrouchat/custom-maven:latest'
     args: ['clean', 'install', '-DskipTests']
 
   # 使用 gcp cloud build 提供的叫做 gcr.io/cloud-builders/docker 的映像檔來做接下來這個步驟要做的事，如下說明：
