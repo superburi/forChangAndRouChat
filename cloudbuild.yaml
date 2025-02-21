@@ -28,7 +28,7 @@ steps:
       [
         'run',
         'deploy',
-        'forChangAndRouChat',
+        'forchangandrouchat',
         '--image', # 這行跟下一行在指定要部署的映像檔是哪個
         'asia-east1-docker.pkg.dev/$PROJECT_ID/forchangandrouchat/forchangandrouchatapp',
         '--region', # region asia-east1 是指定程式要部署到哪個區域的資料中心
