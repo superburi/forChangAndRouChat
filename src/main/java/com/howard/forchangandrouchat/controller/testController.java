@@ -8,7 +8,7 @@ public class testController {
 
     @GetMapping("/test")
     public String test() {
-        return "Hello World 123456789012345678 !";
+        return "張張愛摟摟 !";
     }
 
 }
